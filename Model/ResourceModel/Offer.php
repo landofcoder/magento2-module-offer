@@ -85,8 +85,8 @@ class Offer extends AbstractDb
     public function save(AbstractModel $object)
     {
         $this->_beforeSave($object);
-        $this->entityManager->save($object);
-
+        $newObject = $this->entityManager->save($object);
+        $this->_afterSave($newObject);
         return $this;
     }
 
